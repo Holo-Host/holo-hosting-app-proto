@@ -1,0 +1,67 @@
+{
+  "Version": 1,
+  "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
+  "Name": "holo-hosting",
+  "Properties": {
+    "description": "The Holo Hosting app",
+    "language": "en"
+  },
+  "PropertiesSchemaFile": "properties_schema.json",
+  "DHTConfig": {
+    "HashType": "sha2-256"
+  },
+  "Zomes": [
+    {
+      "Name": "serviceLogs",
+      "Description": "Record service activity and signatures from clients",
+      "RibosomeType": "js",
+      "CodeFile": "servicelogs.js",
+      "Entries": [
+        {
+          "Name": "serviceLog",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "private",
+          "SchemaFile": "serviceLog.json"
+        },
+        {
+          "Name": "serviceLogLink",
+          "Required": true,
+          "DataFormat": "links",
+          "Sharing": "public"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "serviceLogCreate",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "serviceLogRead",
+          "CallingType": "json",
+          "Exposure": "private"
+        },
+        {
+          "Name": "serviceLogUpdate",
+          "CallingType": "json",
+          "Exposure": "private"
+        }
+      ]
+    },
+    {
+      "Name": "requests",
+      "Description": "Dispatch requests from the browser to the appropriate bridged app",
+      "RibosomeType": "js",
+      "CodeFile": "requests.js",
+      "Entries": [],
+      "Functions": [
+        {
+          "Name": "dispatch",
+          "CallingType": "json",
+          "Exposure": ""
+        }
+      ]
+    }
+  ]
+}

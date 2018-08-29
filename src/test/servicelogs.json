@@ -1,0 +1,31 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for serviceLogCreate",
+      "Zome": "serviceLogs",
+      "FnName": "serviceLogCreate",
+      "Input": {
+        "requestHash": "abc",
+        "responseHash": "def"
+      },
+      "Output": "%h%"
+    },
+    {
+      "Convey": "auto-generated test for serviceLogRead",
+      "Zome": "serviceLogs",
+      "FnName": "serviceLogRead",
+      "Input": "%h%",
+      "Output": {
+        "requestHash": "abc",
+        "responseHash": "def"
+      }
+    },
+    {
+      "Convey": "auto-generated test for serviceLogUpdate",
+      "Zome": "serviceLogs",
+      "FnName": "serviceLogUpdate",
+      "Input": "%h%",
+      "Output": "%h%"
+    }
+  ]
+}

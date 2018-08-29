@@ -1,0 +1,16 @@
+{
+  "name": "holo-hosting",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-common": "scripts/build.sh requests && scripts/build.sh serviceLogs && cpx \"src/dna/**/*.json\" build/dna",
+    "build": "mkdir build; rm -r build/dna; npm run build-common",
+    "build-win": "rm -r build/dna & npm run build-common",
+    "dev": "npm run hc:build && cd build && hcdev web"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "typescript": "^3.0.1"
+  }
+}

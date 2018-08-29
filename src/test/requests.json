@@ -1,0 +1,11 @@
+{
+  "Tests": [
+    {
+      "Convey": "auto-generated test for dispatch",
+      "Zome": "requests",
+      "FnName": "dispatch",
+      "Input": "",
+      "Output": {}
+    }
+  ]
+}
