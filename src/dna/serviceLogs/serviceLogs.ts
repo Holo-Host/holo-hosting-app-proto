@@ -48,8 +48,6 @@ function getLogBundle () {
  */
 function genesis () {
   const hash = commit('serviceLogBundle', startBundle)
-  debug('demobundle')
-  debug(hash)
   return true;
 }
 
