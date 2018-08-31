@@ -4,8 +4,27 @@
       "Convey": "auto-generated test for dispatch",
       "Zome": "requests",
       "FnName": "dispatch",
-      "Input": "",
-      "Output": {}
+      "Input": {
+        "agentHash": "007",
+        "targetDna": "abc123",
+        "targetZome": "storage",
+        "saveFile": "xoxoxo",
+        "payload": {"any": "payload"}
+      },
+      "Output": {
+        "logHash": "%h1%",
+        "response": {"fake": "response"}
+      }
+    },
+    {
+      "Convey": "auto-generated test for dispatch",
+      "Zome": "requests",
+      "FnName": "addSignature",
+      "Input": {
+        "logHash": "%h1%",
+        "signature": "maackle wuz here"
+      },
+      "Output": "%h%"
     }
   ]
 }

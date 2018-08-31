@@ -1,7 +1,7 @@
 {
   "Version": 1,
   "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
-  "Name": "holo-hosting",
+  "Name": "holo-host",
   "Properties": {
     "description": "The Holo Hosting app",
     "language": "en"
@@ -15,14 +15,21 @@
       "Name": "serviceLogs",
       "Description": "Record service activity and signatures from clients",
       "RibosomeType": "js",
-      "CodeFile": "servicelogs.js",
+      "CodeFile": "serviceLogs.js",
       "Entries": [
         {
           "Name": "serviceLog",
           "Required": true,
           "DataFormat": "json",
-          "Sharing": "private",
+          "Sharing": "public",
           "SchemaFile": "serviceLog.json"
+        },
+        {
+          "Name": "serviceLogBundle",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "serviceLogBundle.json"
         },
         {
           "Name": "serviceLogLink",
@@ -33,19 +40,19 @@
       ],
       "Functions": [
         {
-          "Name": "serviceLogCreate",
+          "Name": "create",
           "CallingType": "json",
-          "Exposure": "private"
+          "Exposure": "public"
         },
         {
-          "Name": "serviceLogRead",
+          "Name": "addSignature",
           "CallingType": "json",
-          "Exposure": "private"
+          "Exposure": "public"
         },
         {
-          "Name": "serviceLogUpdate",
+          "Name": "getLogBundle",
           "CallingType": "json",
-          "Exposure": "private"
+          "Exposure": "public"
         }
       ]
     },
@@ -59,7 +66,12 @@
         {
           "Name": "dispatch",
           "CallingType": "json",
-          "Exposure": ""
+          "Exposure": "public"
+        },
+        {
+          "Name": "addSignature",
+          "CallingType": "json",
+          "Exposure": "public"
         }
       ]
     }

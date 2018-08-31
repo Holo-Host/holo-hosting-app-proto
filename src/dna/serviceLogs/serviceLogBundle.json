@@ -2,19 +2,14 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "required": [
-    "agentHash",
-    "payloadHash"
+    "startTime"
   ],
   "properties": {
-    "agentHash": {
+    "startTime": {
       "type": "string",
       "pattern": "^(.*)$"
     },
-    "payloadHash": {
-      "type": "string",
-      "pattern": "^(.*)$"
-    },
-    "signature": {
+    "closeTime": {
       "type": "string",
       "pattern": "^(.*)$"
     }

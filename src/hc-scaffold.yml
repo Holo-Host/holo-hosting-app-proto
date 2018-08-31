@@ -20,7 +20,7 @@
 
     # Application Name
     # What would you like to call your holochain app?
-    "Name": "holo-hosting",
+    "Name": "holo-host",
 
     # Properties
     # Properties that you want available across all Zomes.
