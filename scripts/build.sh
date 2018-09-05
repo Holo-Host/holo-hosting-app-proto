@@ -1,7 +1,9 @@
 ZOME=$1
 FLAGS=$2
+SRC="src/dna/$ZOME"
 
-cp _tsconfig.json src/dna/$ZOME/tsconfig.json
+cp _tsconfig.json $SRC/tsconfig.json
 
-tsc $FLAGS -p src/dna/$ZOME --rootDir src --outDir build/ \
-&& rm src/dna/$ZOME/tsconfig.json
+npx tslint --fix -p $SRC/tsconfig.json $SRC/**/*.ts \
+&& tsc $FLAGS -p $SRC --rootDir src --outDir build/ \
+&& rm $SRC/tsconfig.json

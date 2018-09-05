@@ -15,5 +15,9 @@
     "cpx": "^1.5.0",
     "holochain-proto-types": "^0.2.0",
     "typescript": "^3.0.1"
+  },
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1"
   }
 }

@@ -1,47 +1,47 @@
-'use strict';
+'use strict'
 
 type DispatchRequest = {
   agentHash: holochain.Hash,
   targetDna: holochain.Hash,
   targetZome: string,
   targetFunction: string,
-  payload: any,
+  payload: any
 }
 
 function dispatch (request) {
-  const {agentHash} = request;
+  const { agentHash } = request
   // TODO: eventually dispatch to the actual app via bridge()
-  const response = dispatchBridge(request);
+  const response = dispatchBridge(request)
   const logHash = JSON.parse(
     call('serviceLogs', 'create', {
       agentHash,
       payloadHash: makePayloadHash(request, response)
     })
   )
-  return {logHash, response};
+  return { logHash, response }
 }
 
-function dispatchBridge({targetDna, targetZome, targetFunction, payload}) {
+function dispatchBridge ({ targetDna, targetZome, targetFunction, payload }) {
   // TODO: eventually make a real bridge call:
   // bridge(targetDna, targetZome, targetFunction, payload);
 
   // but for now...
   return {
-    "fake": "response",
+    'fake': 'response'
   }
 }
 
-function makePayloadHash(request, response) {
+function makePayloadHash (request, response) {
   const content = JSON.stringify(request) + JSON.stringify(response)  // for instance;
-  return 'TODO: hash of request + response';
+  return 'TODO: hash of request + response'
 }
 
-function addSignature(request) {
-  const {logHash, signature} = request;
+function addSignature (request) {
+  const { logHash, signature } = request
   const sigHash = JSON.parse(
-    call('serviceLogs', 'addSignature', {logHash, signature})
-  );
-  return sigHash;
+    call('serviceLogs', 'addSignature', { logHash, signature })
+  )
+  return sigHash
 }
 
 // -----------------------------------------------------------------
@@ -53,7 +53,7 @@ function addSignature(request) {
  * @return {boolean} success
  */
 function genesis () {
-  return true;
+  return true
 }
 
 // -----------------------------------------------------------------
@@ -73,7 +73,7 @@ function validateCommit (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     default:
       // invalid entry name
-      return true;
+      return true
   }
 }
 
@@ -90,7 +90,7 @@ function validatePut (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     default:
       // invalid entry name
-      return true;
+      return true
   }
 }
 
@@ -108,7 +108,7 @@ function validateMod (entryName, entry, header, replaces, pkg, sources) {
   switch (entryName) {
     default:
       // invalid entry name
-      return true;
+      return true
   }
 }
 
@@ -124,7 +124,7 @@ function validateDel (entryName, hash, pkg, sources) {
   switch (entryName) {
     default:
       // invalid entry name
-      return true;
+      return true
   }
 }
 
@@ -141,7 +141,7 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
   switch (entryName) {
     default:
       // invalid entry name
-      return true;
+      return true
   }
 }
 
@@ -151,7 +151,7 @@ function validateLink (entryName, baseHash, links, pkg, sources) {
  * @return {*} the data required for validation
  */
 function validatePutPkg (entryName) {
-  return null;
+  return null
 }
 
 /**
@@ -160,7 +160,7 @@ function validatePutPkg (entryName) {
  * @return {*} the data required for validation
  */
 function validateModPkg (entryName) {
-  return null;
+  return null
 }
 
 /**
@@ -169,7 +169,7 @@ function validateModPkg (entryName) {
  * @return {*} the data required for validation
  */
 function validateDelPkg (entryName) {
-  return null;
+  return null
 }
 
 /**
@@ -178,5 +178,5 @@ function validateDelPkg (entryName) {
  * @return {*} the data required for validation
  */
 function validateLinkPkg (entryName) {
-  return null;
+  return null
 }
