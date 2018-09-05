@@ -1,0 +1,23 @@
+{
+  "name": "holo-host",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build-common": "scripts/build.sh requests && scripts/build.sh serviceLogs && cpx \"src/dna/**/*.json\" build/dna && cp -r src/test build/test",
+    "build": "mkdir build; rm -rf build/*; npm run build-common",
+    "build-win": "rm -r build/dna & npm run build-common",
+    "dev": "npm run build && cd build && hcdev web",
+    "watch": "scripts/build.sh requests -w & scripts/build.sh serviceLogs -w & rm -rf build/test && ln -s ../src/test build/test",
+    "test": "npm run build && cd build/test && hcdev test"
+  },
+  "dependencies": {
+    "cpx": "^1.5.0",
+    "holochain-proto-types": "^0.2.0",
+    "typescript": "^3.0.1"
+  },
+  "devDependencies": {
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1"
+  }
+}

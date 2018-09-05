@@ -1,0 +1,31 @@
+{
+  "Tests": [
+    {
+      "Convey": "Can create service log",
+      "Zome": "serviceLogs",
+      "FnName": "create",
+      "Input": {
+        "payloadHash": "abc",
+        "agentHash": "def"
+      },
+      "Output": "%h1%"
+    },
+    {
+      "Convey": "Can retrieve service logs",
+      "Zome": "serviceLogs",
+      "FnName": "getLogBundle",
+      "Input": null,
+      "Output": [{"Entry":{"agentHash":"def","payloadHash":"abc"},"EntryType":"serviceLog","Hash":"%h1%","Source":"%key%"}]
+    },
+    {
+      "Convey": "Can sign service logs",
+      "Zome": "serviceLogs",
+      "FnName": "addSignature",
+      "Input": {
+        "logHash": "%h1%",
+        "signature": "maackle wuz here"
+      },
+      "Output": "%h%"
+    }
+  ]
+}

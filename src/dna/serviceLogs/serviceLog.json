@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": [
+    "agentHash",
+    "payloadHash"
+  ],
+  "properties": {
+    "agentHash": {
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "payloadHash": {
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^(.*)$"
+    }
+  }
+}
