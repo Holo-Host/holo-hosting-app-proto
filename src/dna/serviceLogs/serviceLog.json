@@ -3,20 +3,34 @@
   "type": "object",
   "required": [
     "agentHash",
-    "payloadHash"
+    "requestPayload",
+    "metrics"
   ],
   "properties": {
     "agentHash": {
       "type": "string",
+      "description": "Hash of requesting agent",
       "pattern": "^(.*)$"
     },
-    "payloadHash": {
+    "requestPayload": {
       "type": "string",
+      "description": "Serialized JSON of request payload",
       "pattern": "^(.*)$"
     },
-    "signature": {
-      "type": "string",
-      "pattern": "^(.*)$"
+    "metrics": {
+      "type": "object",
+      "description": "Metrics used to calculate costs",
+      "properties": {
+        "cpuTime": {
+          "type": "number"
+        },
+        "bytesIn": {
+          "type": "number"
+        },
+        "bytesOut": {
+          "type": "number"
+        }
+      }
     }
   }
 }
