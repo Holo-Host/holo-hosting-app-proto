@@ -8,17 +8,17 @@
 //  Exposed functions with custom logic https://developer.holochain.org/API_reference
 // -----------------------------------------------------------------
 
-// TODO: eventually we may want a notion of a "bundle" of logs,
+// TODO: eventually we may want a notion of a "batch" of logs,
 // a collection of uninvoiced (or already-invoiced) service log entries.
 // For now, just create one and use it all the time.
-const startBundle = { startTime: 'now' }
-const demoBundle = makeHash('serviceLogBundle', startBundle)
+const startBatch = { startTime: 'now' }
+const demoBatch = makeHash('serviceLogBatch', startBatch)
 
 function create (entry) {
   const hash = commit('serviceLog', entry)
   commit('serviceLogLink', {
     Links: [{
-      Base: demoBundle,
+      Base: demoBatch,
       Link: hash,
       Tag: 'serviceLog'
     }]
@@ -33,8 +33,8 @@ function addSignature ({ logHash, signature }) {
   return newHash
 }
 
-function getLogBundle () {
-  return getLinks(demoBundle, 'serviceLog', { Load: true })
+function getLogBatch () {
+  return getLinks(demoBatch, 'serviceLog', { Load: true })
 }
 
 // -----------------------------------------------------------------
@@ -46,7 +46,7 @@ function getLogBundle () {
  * @return {boolean} success
  */
 function genesis () {
-  const hash = commit('serviceLogBundle', startBundle)
+  const hash = commit('serviceLogBatch', startBatch)
   return true
 }
 
@@ -74,7 +74,7 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       // TODO: replace with verifySignature
       return !signature || mockVerifySignature(signature, payloadHash, agentHash)
 
-    case 'serviceLogBundle':
+    case 'serviceLogBatch':
       return true
 
     case 'serviceLogLink':
