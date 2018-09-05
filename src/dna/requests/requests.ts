@@ -18,7 +18,6 @@ function dispatch (request) {
       payloadHash: makePayloadHash(request, response)
     })
   )
-  debug(logHash)
   return {logHash, response};
 }
 
