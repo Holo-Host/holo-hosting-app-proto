@@ -46,6 +46,10 @@ function genesis () {
   return true
 }
 
+function bridgeGenesis () {
+  return true
+}
+
 function validateCommit (entryName, entry, header, pkg, sources) {
   switch (entryName) {
     default:

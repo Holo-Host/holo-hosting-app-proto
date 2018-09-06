@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build-common": "scripts/build.sh requests && scripts/build.sh serviceLogs && cpx \"src/dna/**/*.json\" build/dna && cp -r src/test build/test",
+    "build-common": "scripts/build.sh requests && scripts/build.sh serviceLogs && cpx \"src/**/*.json\" build && cp -r src/test build/test",
     "build": "mkdir build; rm -rf build/*; npm run build-common",
     "build-win": "rm -r build/dna & npm run build-common",
     "dev": "npm run build && cd build && hcdev web",
