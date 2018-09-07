@@ -5,27 +5,22 @@
       "Zome": "serviceLogs",
       "FnName": "create",
       "Input": {
-        "payloadHash": "abc",
-        "agentHash": "def"
+        "agentHash": "def",
+        "requestPayload": "anything",
+        "metrics": {
+          "cpuTime": 440,
+          "bytesIn": 3000,
+          "bytesOut": 9000
+        }
       },
       "Output": "%h1%"
     },
     {
       "Convey": "Can retrieve service logs",
       "Zome": "serviceLogs",
-      "FnName": "getLogBundle",
+      "FnName": "getLogBatch",
       "Input": null,
-      "Output": [{"Entry":{"agentHash":"def","payloadHash":"abc"},"EntryType":"serviceLog","Hash":"%h1%","Source":"%key%"}]
-    },
-    {
-      "Convey": "Can sign service logs",
-      "Zome": "serviceLogs",
-      "FnName": "addSignature",
-      "Input": {
-        "logHash": "%h1%",
-        "signature": "maackle wuz here"
-      },
-      "Output": "%h%"
+      "Output": [{"Entry":{"agentHash":"def","metrics":{"bytesIn":3000,"bytesOut":9000,"cpuTime":440},"requestPayload":"anything"},"EntryType":"serviceLog","Hash":"%h1%","Source":"%key%"}]
     }
   ]
 }

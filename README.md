@@ -2,17 +2,19 @@
 
 The Holo Hosting App -- **WIP**
 
+This app sits in front of the app which it is hosting. One instance of the Hosting app can only service one app. This is specified in the `targetDnaHash` property.
+
 ## Structure
 
 The public API consists of these functions:
 
 * `requests/dispatch`
+    - potentially peel off any signature or verification the browser user has sent along with this request, and store it (TODO, unsure how this will show up)
     - make a bridged function call to some other app as specified in the request
-    - record a service log entry including the hash of request and response payloads (the "payload hash") 
-    - send back the response payload along with a service log hash to the user
-* `requests/addSignature`
-    - After the browser receives the response, it immediately checks the hash of the payloads
-    - If valid, browser sends back a signature for this payload along with the service log hash provided by `dispatch` (so the host knows which entry it's for)
+    - record a service log entry including: 
+        - the full request (perhaps with parts truncated)
+        - metrics about the fulfillment (CPU time, bandwidth, etc.)
+    - send back to the user the response payload along with a hash referring to the service log
 * `serviceLogs/getLogBundle`
     - Simply does `getLinks` to get all service logs
 

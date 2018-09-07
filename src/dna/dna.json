@@ -3,7 +3,7 @@
   "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
   "Name": "holo-host",
   "Properties": {
-    "description": "The Holo Hosting app",
+    "targetDnaHash": "[Provide DNA Hash here]",
     "language": "en"
   },
   "PropertiesSchemaFile": "properties_schema.json",
@@ -25,11 +25,11 @@
           "SchemaFile": "serviceLog.json"
         },
         {
-          "Name": "serviceLogBundle",
+          "Name": "serviceLogBatch",
           "Required": true,
           "DataFormat": "json",
           "Sharing": "public",
-          "SchemaFile": "serviceLogBundle.json"
+          "SchemaFile": "serviceLogBatch.json"
         },
         {
           "Name": "serviceLogLink",
@@ -45,12 +45,7 @@
           "Exposure": "public"
         },
         {
-          "Name": "addSignature",
-          "CallingType": "json",
-          "Exposure": "public"
-        },
-        {
-          "Name": "getLogBundle",
+          "Name": "getLogBatch",
           "CallingType": "json",
           "Exposure": "public"
         }
@@ -65,11 +60,6 @@
       "Functions": [
         {
           "Name": "dispatch",
-          "CallingType": "json",
-          "Exposure": "public"
-        },
-        {
-          "Name": "addSignature",
           "CallingType": "json",
           "Exposure": "public"
         }

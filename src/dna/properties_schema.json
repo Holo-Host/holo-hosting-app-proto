@@ -2,7 +2,7 @@
   "title": "Properties Schema",
   "type": "object",
   "properties": {
-    "description": {
+    "targetDnaHash": {
       "type": "string"
     },
     "language": {

@@ -1,0 +1,3 @@
+[submodule "testapp"]
+	path = testapp
+	url = git@github.com:Holo-Host/holojs-sample-app.git
