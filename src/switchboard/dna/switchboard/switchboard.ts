@@ -101,3 +101,7 @@ function validateDelPkg (entryName) {
 function validateLinkPkg (entryName) {
   return null
 }
+
+// TypeScript workaround
+export = 0
+const module = {}
