@@ -1,7 +1,19 @@
 [
   {
-    "Path":                    "../testapp",
-    "Side":                    1,
-    "BridgeZome":              "sampleZome"
+    "Path": "../../testapp",
+    "Side": 1,
+    "BridgeZome": "sampleZome"
+  },
+  {
+    "Path": "../switchboard",
+    "Side": 2,
+    "Port": 4000,
+    "BridgeZome": "management",
+    "BridgeGenesisCallerData": {
+      "this": "is the BridgeGenesisCallerData"
+    },
+    "BridgeGenesisCalleeData": {
+      "and this": "is the BridgeGenesisCalleeData"
+    },
   }
 ]

@@ -6,7 +6,7 @@
 const startBatch = { startTime: 'now' }
 const demoBatch = makeHash('serviceLogBatch', startBatch)
 
-function create (entry) {
+function createServiceLog (entry) {
   const hash = commit('serviceLog', entry)
   commit('serviceLogLink', {
     Links: [{

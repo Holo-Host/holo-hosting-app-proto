@@ -12,10 +12,10 @@
   },
   "Zomes": [
     {
-      "Name": "serviceLogs",
+      "Name": "accountant",
       "Description": "Record service activity and signatures from clients",
       "RibosomeType": "js",
-      "CodeFile": "serviceLogs.js",
+      "CodeFile": "accountant.js",
       "Entries": [
         {
           "Name": "serviceLog",

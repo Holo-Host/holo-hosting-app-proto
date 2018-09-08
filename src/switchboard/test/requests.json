@@ -2,7 +2,7 @@
   "Tests": [
     {
       "Convey": "auto-generated test for dispatch",
-      "Zome": "requests",
+      "Zome": "switchboard",
       "FnName": "dispatch",
       "Input": {
         "agentHash": "007",

@@ -11,14 +11,41 @@
   },
   "Zomes": [
     {
-      "Name": "requests",
-      "Description": "Dispatch requests from the browser to the appropriate bridged app",
+      "Name": "switchboard",
+      "Description": "Dispatch requests from the browser to the appropriate bridged accountant app",
       "RibosomeType": "js",
-      "CodeFile": "requests.js",
+      "CodeFile": "switchboard.js",
       "Entries": [],
       "Functions": [
         {
           "Name": "dispatch",
+          "CallingType": "json",
+          "Exposure": "public"
+        }
+      ]
+    },
+    {
+      "Name": "management",
+      "Description": "Register apps and manage hosted hApps on this host instance",
+      "RibosomeType": "js",
+      "CodeFile": "management.js",
+      "Entries": [
+        {
+          "Name": "registeredApp",
+          "Required": true,
+          "DataFormat": "json",
+          "Sharing": "public",
+          "SchemaFile": "registeredApp.json"
+        }
+      ],
+      "Functions": [
+        {
+          "Name": "registerApp",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
+          "Name": "forgetApp",
           "CallingType": "json",
           "Exposure": "public"
         }

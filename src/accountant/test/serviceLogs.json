@@ -2,8 +2,8 @@
   "Tests": [
     {
       "Convey": "Can create service log",
-      "Zome": "serviceLogs",
-      "FnName": "create",
+      "Zome": "accountant",
+      "FnName": "createServiceLog",
       "Input": {
         "agentHash": "def",
         "requestPayload": "anything",
@@ -17,7 +17,7 @@
     },
     {
       "Convey": "Can retrieve service logs",
-      "Zome": "serviceLogs",
+      "Zome": "accountant",
       "FnName": "getLogBatch",
       "Input": null,
       "Output": [{"Entry":{"agentHash":"def","metrics":{"bytesIn":3000,"bytesOut":9000,"cpuTime":440},"requestPayload":"anything"},"EntryType":"serviceLog","Hash":"%h1%","Source":"%key%"}]
