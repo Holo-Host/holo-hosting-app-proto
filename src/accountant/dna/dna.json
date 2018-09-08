@@ -1,7 +1,7 @@
 {
   "Version": 1,
   "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
-  "Name": "holo-host",
+  "Name": "holo-host-accountant",
   "Properties": {
     "targetDnaHash": "[Provide DNA Hash here]",
     "language": "en"
@@ -46,20 +46,6 @@
         },
         {
           "Name": "getLogBatch",
-          "CallingType": "json",
-          "Exposure": "public"
-        }
-      ]
-    },
-    {
-      "Name": "requests",
-      "Description": "Dispatch requests from the browser to the appropriate bridged app",
-      "RibosomeType": "js",
-      "CodeFile": "requests.js",
-      "Entries": [],
-      "Functions": [
-        {
-          "Name": "dispatch",
           "CallingType": "json",
           "Exposure": "public"
         }
