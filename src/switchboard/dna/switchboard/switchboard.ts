@@ -13,7 +13,7 @@ function dispatch (request) {
   const { agentHash, rpc } = request
   const { payload, metrics } = dispatchBridge(rpc)
   const logHash = JSON.parse(
-    call('serviceLogs', 'create', {
+    call('accountant', 'createServiceLog', {
       agentHash,
       metrics,
       requestPayload: JSON.stringify(rpc)

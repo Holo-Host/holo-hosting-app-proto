@@ -1,8 +1,7 @@
 [
   {
-    "Path": "../switchboard",
-    "Side": 0,
-    "Port": "4000",
+    "Path": "../accountant",
+    "Side": 1,
     "BridgeZome": "management",
     "BridgeGenesisCallerData": "BridgeGenesisCallerData",
     "BridgeGenesisCalleeData": "BridgeGenesisCalleeData"

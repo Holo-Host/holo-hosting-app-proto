@@ -32,13 +32,22 @@
       "Entries": [
         {
           "Name": "registeredApp",
-          "Required": true,
           "DataFormat": "json",
           "Sharing": "public",
           "SchemaFile": "registeredApp.json"
+        },
+        {
+          "Name": "registeredAppLink",
+          "Required": true,
+          "DataFormat": "links"
         }
       ],
       "Functions": [
+        {
+          "Name": "getRegisteredApps",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
         {
           "Name": "registerApp",
           "CallingType": "json",

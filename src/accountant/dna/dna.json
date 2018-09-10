@@ -40,6 +40,11 @@
       ],
       "Functions": [
         {
+          "Name": "targetDnaHash",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
           "Name": "create",
           "CallingType": "json",
           "Exposure": "public"

@@ -26,12 +26,27 @@ function mockVerifySignature (signature, payloadHash, agentHash) {
   return signature !== 'bad signature'
 }
 
+function targetDnaHash () {
+  debug('targetDnaHash GOOO')
+  return property('targetDnaHash')
+}
+
 // -----------------------------------------------------------------
 //  Callbacks
 // -----------------------------------------------------------------
 
 function genesis () {
   const hash = commit('serviceLogBatch', startBatch)
+  return true
+}
+
+function bridgeGenesis (side, dna, appData) {
+  // TODO: add registeredApp entry
+
+  debug('FROM ACCOUNTANT')
+  debug(side)
+  debug(dna)
+  debug(appData)
   return true
 }
 

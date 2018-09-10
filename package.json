@@ -4,12 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build-common": "scripts/build.sh && cpx \"src/**/*.json\" build && cpx \"src/**/test\" build",
+    "build-common": "scripts/build.sh && scripts/copy.sh",
     "build": "mkdir build; rm -rf build/*; npm run build-common",
     "build-win": "rm -r build/dna & npm run build-common",
     "dev": "npm run build && cd build && hcdev web",
-    "watch": "scripts/build.sh requests -w & scripts/build.sh serviceLogs -w & rm -rf build/test && ln -s ../src/test build/test",
-    "test": "npm run build && cd build/test && hcdev test"
+    "watch": "scripts/build.sh -w & scripts/copy.sh -w",
+    "test": "npm run build && cd build/test && hcdev test",
+    "install": "scripts/install.sh"
   },
   "dependencies": {
     "cpx": "^1.5.0",
