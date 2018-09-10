@@ -10,7 +10,7 @@
     "dev": "npm run build && cd build && hcdev web",
     "watch": "scripts/build.sh -w & scripts/copy.sh -w",
     "test": "npm run build && cd build/test && hcdev test",
-    "install": "scripts/install.sh"
+    "join": "scripts/join.sh"
   },
   "dependencies": {
     "cpx": "^1.5.0",

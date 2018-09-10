@@ -1,6 +1,3 @@
 node_modules/
 build/
 scaffold/
-
-# these tsconfigs get created and destroyed during the build step
-src/**/tsconfig.json
