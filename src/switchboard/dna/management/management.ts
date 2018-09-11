@@ -1,14 +1,14 @@
 
-function registerApp() {
-
+function registerApp () {
+  return true
 }
 
-function forgetApp() {
-
+function forgetApp () {
+  return true
 }
 
-function getRegisteredApps() {
-  const apps = getLinks(App.Agent.Hash, 'registeredApp', {Load: true}).map(e => e.Entry)
+function getRegisteredApps () {
+  const apps = getLinks(App.Agent.Hash, 'registeredApp', { Load: true }).map(e => e.Entry)
   return apps
   // return getBridges().filter(x => x).map(b => b.CalleeApp)
 }
@@ -44,7 +44,6 @@ function bridgeGenesis (side, dna, appData) {
   return true
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +51,6 @@ function bridgeGenesis (side, dna, appData) {
 function genesis () {
   return true
 }
-
 
 function validateCommit (entryName, entry, header, pkg, sources) {
   switch (entryName) {
