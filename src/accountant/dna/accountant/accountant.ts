@@ -27,7 +27,6 @@ function mockVerifySignature (signature, payloadHash, agentHash) {
 }
 
 function targetDnaHash () {
-  debug('targetDnaHash GOOO')
   return property('targetDnaHash')
 }
 

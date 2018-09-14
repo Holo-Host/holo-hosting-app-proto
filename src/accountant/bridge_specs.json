@@ -4,6 +4,13 @@
     "Side": 0,
     "Port": "4000",
     "BridgeZome": "management",
+    "BridgeGenesisCallerData": "TODO-REMOVE-HACK"
+  },
+  {
+    "Path": "../../../hosted-happs/sample-app-1",
+    "Side": 1,
+    "Port": "4001",
+    "BridgeZome": "accountant",
     "BridgeGenesisCallerData": "BridgeGenesisCallerData",
     "BridgeGenesisCalleeData": "BridgeGenesisCalleeData"
   }

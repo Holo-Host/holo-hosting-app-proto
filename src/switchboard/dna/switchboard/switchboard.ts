@@ -2,6 +2,7 @@
 
 type DispatchRequest = {
   agentHash: holochain.Hash,
+  appHash: holochain.Hash,
   rpc: {
     zome: string,
     func: string,
@@ -9,16 +10,22 @@ type DispatchRequest = {
   }
 }
 
-function dispatch (request) {
-  const { agentHash, rpc } = request
+function dispatch (request: DispatchRequest) {
+  const { agentHash, appHash, rpc } = request
+  const apps = getAppEntry(appHash)
+  if (!apps) {
+    debug('unknown appHash: ' + appHash)
+    return "TODO: error payload"
+  }
+
+  const { accountantHash } = apps!
   const { payload, metrics } = dispatchBridge(rpc)
-  const logHash = JSON.parse(
-    call('accountant', 'createServiceLog', {
-      agentHash,
-      metrics,
-      requestPayload: JSON.stringify(rpc)
-    })
-  )
+  const response = bridge(accountantHash, 'accountant', 'createServiceLog', {
+    agentHash,
+    metrics,
+    requestPayload: JSON.stringify(rpc)
+  })
+  const logHash = JSON.parse(response)
   return { logHash, response: payload }
 }
 
@@ -36,6 +43,11 @@ function dispatchBridge (rpc) {
     bytesOut: JSON.stringify(payload).length
   }
   return { payload, metrics }
+}
+
+function getAppEntry(appHash: holochain.Hash): holochain.Hash | undefined {
+  const apps = JSON.parse(call('management', 'getRegisteredApps', {}))
+  return apps.filter(a => a.appHash === appHash || a.appHash === 'TODO-REMOVE-HACK')[0]
 }
 
 // -----------------------------------------------------------------

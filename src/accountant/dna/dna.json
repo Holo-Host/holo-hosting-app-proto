@@ -3,7 +3,8 @@
   "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
   "Name": "holo-host-accountant",
   "Properties": {
-    "targetDnaHash": "[Provide DNA Hash here]",
+    "hostedAppDnaHash": "[Provided by init-chain script]",
+    "hostedIdentity": "[Provided by init-chain script]",
     "language": "en"
   },
   "PropertiesSchemaFile": "properties_schema.json",
@@ -45,7 +46,7 @@
           "Exposure": "public"
         },
         {
-          "Name": "create",
+          "Name": "createServiceLog",
           "CallingType": "json",
           "Exposure": "public"
         },
@@ -54,6 +55,9 @@
           "CallingType": "json",
           "Exposure": "public"
         }
+      ],
+      "BridgeFuncs": [
+        "createServiceLog"
       ]
     }
   ]

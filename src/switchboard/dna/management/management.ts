@@ -40,7 +40,8 @@ function bridgeGenesis (side, dna, appData) {
       Tag: 'registeredApp'
     }]
   })
-
+  debug("Registered app w/ switchboard:")
+  debug(dna)
   return true
 }
 

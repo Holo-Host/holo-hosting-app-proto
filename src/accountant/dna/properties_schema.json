@@ -2,6 +2,12 @@
   "title": "Properties Schema",
   "type": "object",
   "properties": {
+    "hostedAppDnaHash": {
+      "type": "string"
+    },
+    "hostedIdentity": {
+      "type": "string"
+    },
     "language": {
       "type": "string"
     }
