@@ -46,7 +46,7 @@
           "Exposure": "public"
         },
         {
-          "Name": "createServiceLog",
+          "Name": "handleRequest",
           "CallingType": "json",
           "Exposure": "public"
         },
@@ -57,7 +57,7 @@
         }
       ],
       "BridgeFuncs": [
-        "createServiceLog"
+        "handleRequest"
       ]
     }
   ]

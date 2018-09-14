@@ -6,7 +6,30 @@
 const startBatch = { startTime: 'now' }
 const demoBatch = makeHash('serviceLogBatch', startBatch)
 
-function createServiceLog (entry) {
+function handleRequest (rpc) {
+  const appHash = 'QmbZeFchQ3gtc1ZUUpZSSsznZDjyeq1dJMBq12hCohpygH' // property('hostedAppDnaHash')
+  const agentHash = property('hostedIdentity')
+  const { zome, func, args } = rpc
+  const responseString = bridge(appHash, zome, func, args)
+  const response = JSON.parse(responseString)
+
+  // TODO: obviously fake metrics for now...
+  const metrics = {
+    cpuTime: 432,
+    bytesIn: JSON.stringify(rpc).length,
+    bytesOut: responseString.length
+  }
+
+  const logHash = recordServiceLog({
+    agentHash,
+    metrics,
+    requestPayload: JSON.stringify(rpc)
+  })
+
+  return { response, logHash }
+}
+
+function recordServiceLog (entry) {
   const hash = commit('serviceLog', entry)
   commit('serviceLogLink', {
     Links: [{

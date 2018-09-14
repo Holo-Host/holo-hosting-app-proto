@@ -19,14 +19,9 @@ function dispatch (request: DispatchRequest) {
   }
 
   const { accountantHash } = apps!
-  const { payload, metrics } = dispatchBridge(rpc)
-  const response = bridge(accountantHash, 'accountant', 'createServiceLog', {
-    agentHash,
-    metrics,
-    requestPayload: JSON.stringify(rpc)
-  })
-  const logHash = JSON.parse(response)
-  return { logHash, response: payload }
+  const responseString = bridge(accountantHash, 'accountant', 'handleRequest', rpc)
+  debug("responseSTring: " + responseString)
+  return JSON.parse(responseString)
 }
 
 function dispatchBridge (rpc) {
