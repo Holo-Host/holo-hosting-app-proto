@@ -1,24 +1,20 @@
 'use strict'
 
-type DispatchRequest = {
-  agentHash: holochain.Hash,
-  appHash: holochain.Hash,
-  rpc: {
-    zome: string,
-    func: string,
-    args: any
-  }
+type RPC = {
+  zome: string,
+  func: string,
+  args: any
 }
 
-function dispatch (request: DispatchRequest) {
-  const { agentHash, appHash, rpc } = request
-  const apps = getAppEntry(appHash)
-  if (!apps) {
-    debug('unknown appHash: ' + appHash)
-    return "TODO: error payload"
+function dispatch (rpc: RPC) {
+  const agentHash = App.Agent.Hash
+  const apps = JSON.parse(call('management', 'getRegisteredApps', {}))
+  if (!apps || apps.length !== 1) {
+    debug("Switchboard misconfigured! Exactly 1 app should be registered for this agent.")
+    return
   }
-
-  const { accountantHash } = apps!
+  const { appHash, accountantHash } = apps[0]!
+  debug("attempting to bridge to [" + accountantHash "].")
   const responseString = bridge(accountantHash, 'accountant', 'handleRequest', rpc)
   debug("responseSTring: " + responseString)
   return JSON.parse(responseString)
@@ -40,10 +36,17 @@ function dispatchBridge (rpc) {
   return { payload, metrics }
 }
 
-function getAppEntry(appHash: holochain.Hash): holochain.Hash | undefined {
-  const apps = JSON.parse(call('management', 'getRegisteredApps', {}))
-  return apps.filter(a => a.appHash === appHash || a.appHash === 'TODO-REMOVE-HACK')[0]
-}
+// function getAppEntry(appHash: holochain.Hash): holochain.Hash | null {
+//   const apps = JSON.parse(call('management', 'getRegisteredApps', {}))
+//   const match = apps.filter(a => a.appHash === appHash || a.appHash === 'TODO-REMOVE-HACK')[0]
+//   if (match) {
+//     return match
+//   } else {
+//     const hashes = apps.map(h => `- ${h.appHash}`).join("\n")
+//     debug("appHash not found: " + appHash + "\nAvailable DNA hashes:\n" + hashes)
+//     return null
+//   }
+// }
 
 // -----------------------------------------------------------------
 //  Callbacks

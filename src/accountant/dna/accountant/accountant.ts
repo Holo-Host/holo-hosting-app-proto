@@ -7,7 +7,7 @@ const startBatch = { startTime: 'now' }
 const demoBatch = makeHash('serviceLogBatch', startBatch)
 
 function handleRequest (rpc) {
-  const appHash = 'QmbZeFchQ3gtc1ZUUpZSSsznZDjyeq1dJMBq12hCohpygH' // property('hostedAppDnaHash')
+  const appHash = property('hostedAppDnaHash')
   const agentHash = property('hostedIdentity')
   const { zome, func, args } = rpc
   const responseString = bridge(appHash, zome, func, args)
