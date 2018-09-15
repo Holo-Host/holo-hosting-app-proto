@@ -10,13 +10,13 @@ function dispatch (rpc: RPC) {
   const agentHash = App.Agent.Hash
   const apps = JSON.parse(call('management', 'getRegisteredApps', {}))
   if (!apps || apps.length !== 1) {
-    debug("Switchboard misconfigured! Exactly 1 app should be registered for this agent.")
+    debug('Switchboard misconfigured! Exactly 1 app should be registered for this agent.')
     return
   }
-  const { appHash, accountantHash } = apps[0]!
-  debug("attempting to bridge to [" + accountantHash "].")
+  const { appHash, accountantHash } = apps[0]
+  debug('attempting to bridge to [' + accountantHash + '].')
   const responseString = bridge(accountantHash, 'accountant', 'handleRequest', rpc)
-  debug("responseSTring: " + responseString)
+  debug('responseSTring: ' + responseString)
   return JSON.parse(responseString)
 }
 
