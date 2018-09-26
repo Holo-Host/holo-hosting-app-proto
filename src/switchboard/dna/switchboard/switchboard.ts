@@ -15,8 +15,9 @@ function dispatch (rpc: RPC) {
   }
   const { appHash, accountantHash } = apps[0]
   debug('attempting to bridge to [' + accountantHash + '].')
+  debug(rpc)
   const responseString = bridge(accountantHash, 'accountant', 'handleRequest', rpc)
-  debug('responseSTring: ' + responseString)
+  debug('responseString :: ' + responseString)
   return JSON.parse(responseString)
 }
 

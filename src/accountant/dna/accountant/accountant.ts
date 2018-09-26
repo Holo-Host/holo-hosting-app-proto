@@ -9,8 +9,13 @@ const demoBatch = makeHash('serviceLogBatch', startBatch)
 function handleRequest (rpc) {
   const appHash = property('hostedAppDnaHash')
   const agentHash = property('hostedIdentity')
+  debug(appHash)
+  debug(agentHash)
+  debug(rpc)
   const { zome, func, args } = rpc
   const responseString = bridge(appHash, zome, func, args)
+  debug("Accountant response:")
+  debug(responseString)
   const response = JSON.parse(responseString)
 
   // TODO: obviously fake metrics for now...

@@ -2,16 +2,14 @@
   {
     "Path": "../switchboard",
     "Side": 0,
-    "Port": "4000",
+    "Port": "4001",
     "BridgeZome": "management",
-    "BridgeGenesisCallerData": "TODO-REMOVE-HACK"
+    "BridgeGenesisCallerData": "QmbZeFchQ3gtc1ZUUpZSSsznZDjyeq1dJMBq12hCohpygH"
   },
   {
     "Path": "../../../hosted-happs/sample-app-1",
     "Side": 1,
-    "Port": "4001",
-    "BridgeZome": "accountant",
-    "BridgeGenesisCallerData": "BridgeGenesisCallerData",
-    "BridgeGenesisCalleeData": "BridgeGenesisCalleeData"
+    "Port": "4005",
+    "BridgeZome": "accountant"
   }
 ]
