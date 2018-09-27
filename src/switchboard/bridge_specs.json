@@ -1,9 +1,0 @@
-[
-  {
-    "Path": "../accountant",
-    "Side": 1,
-    "BridgeZome": "management",
-    "BridgeGenesisCallerData": "BridgeGenesisCallerData",
-    "BridgeGenesisCalleeData": "BridgeGenesisCalleeData"
-  }
-]

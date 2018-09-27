@@ -15,7 +15,7 @@ function handleRequest (rpc) {
   const agentHash = property('hostedIdentity')
   const { zome, func, args } = rpc
   info(`Calling ${zome}/${func} @ ${dnaHash} with args:`)
-  info(args)
+  debug(args)
   const responseString = bridge(dnaHash, zome, func, args)
   let response
   try {
@@ -25,7 +25,7 @@ function handleRequest (rpc) {
     response = responseString
   }
   info("response:")
-  info(response)
+  debug(response)
 
   // TODO: obviously fake metrics for now...
   const metrics = {
