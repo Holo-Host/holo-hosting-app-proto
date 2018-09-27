@@ -56,7 +56,8 @@ function recordServiceLog (entry) {
 }
 
 function getLogBatch () {
-  return getLinks(demoBatch, 'serviceLog', { Load: true })
+  const links = getLinks(demoBatch, 'serviceLog', { Load: true })
+  return links.map(link => link.Entry)
 }
 
 function mockVerifySignature (signature, payloadHash, agentHash) {
