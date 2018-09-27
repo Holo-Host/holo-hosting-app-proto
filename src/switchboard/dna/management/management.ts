@@ -7,6 +7,10 @@ function forgetApp () {
   return true
 }
 
+function info(...msgs) {
+  debug('[management] ' + msgs.join(' '))
+}
+
 function getRegisteredApps () {
   const apps = getLinks(App.Agent.Hash, 'registeredApp', { Load: true }).map(e => e.Entry)
   return apps
@@ -16,7 +20,7 @@ function getRegisteredApps () {
 function bridgeGenesis (side, dna, appData) {
 
   if (side === HC.Bridge.Callee) {
-    debug("Can't use switchboard as callee!")
+    info("Can't use switchboard as callee!")
     return false
   }
 
@@ -25,7 +29,7 @@ function bridgeGenesis (side, dna, appData) {
   const targetDnaHash = appData
 
   if (!targetDnaHash) {
-    debug('Please provide the hosted app DNA hash as the BridgeCalleeData')
+    info('Please provide the hosted app DNA hash as the BridgeCalleeData')
     return false
   }
 
@@ -40,8 +44,7 @@ function bridgeGenesis (side, dna, appData) {
       Tag: 'registeredApp'
     }]
   })
-  debug('Registered app w/ switchboard:')
-  debug(dna)
+  info(`Registered app w/ switchboard: <${dna}>`)
   return true
 }
 

@@ -6,17 +6,26 @@
 const startBatch = { startTime: 'now' }
 const demoBatch = makeHash('serviceLogBatch', startBatch)
 
+function info(...msgs) {
+  debug('[accountant] ' + msgs.join(' '))
+}
+
 function handleRequest (rpc) {
-  const appHash = property('hostedAppDnaHash')
+  const dnaHash = property('hostedDnaHash')
   const agentHash = property('hostedIdentity')
-  debug(appHash)
-  debug(agentHash)
-  debug(rpc)
   const { zome, func, args } = rpc
-  const responseString = bridge(appHash, zome, func, args)
-  debug("Accountant response:")
-  debug(responseString)
-  const response = JSON.parse(responseString)
+  info(`Calling ${zome}/${func} @ ${dnaHash} with args:`)
+  info(args)
+  const responseString = bridge(dnaHash, zome, func, args)
+  let response
+  try {
+    response = JSON.parse(responseString)
+  } catch {
+    info("Parsing failed, interpreting response as string")
+    response = responseString
+  }
+  info("response:")
+  info(response)
 
   // TODO: obviously fake metrics for now...
   const metrics = {
@@ -68,12 +77,6 @@ function genesis () {
 }
 
 function bridgeGenesis (side, dna, appData) {
-  // TODO: add registeredApp entry
-
-  debug('FROM ACCOUNTANT')
-  debug(side)
-  debug(dna)
-  debug(appData)
   return true
 }
 
@@ -88,8 +91,8 @@ function validateCommit (entryName, entry, header, pkg, sources) {
       return true
 
     case 'serviceLogLink':
-      debug('serviceLogLink:')
-      debug(entry)
+      info('serviceLogLink (TODO)')
+      info(entry)
       return true
     default:
       // invalid entry name

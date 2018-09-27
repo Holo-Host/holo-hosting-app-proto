@@ -3,7 +3,7 @@
   "UUID": "4a4beb46-a3cf-476f-8593-e30155186707",
   "Name": "holo-host-accountant",
   "Properties": {
-    "hostedAppDnaHash": "QmbZeFchQ3gtc1ZUUpZSSsznZDjyeq1dJMBq12hCohpygH",
+    "hostedDnaHash": "QmbZeFchQ3gtc1ZUUpZSSsznZDjyeq1dJMBq12hCohpygH",
     "hostedIdentity": "[Provided by init-chain script]",
     "language": "en"
   },
