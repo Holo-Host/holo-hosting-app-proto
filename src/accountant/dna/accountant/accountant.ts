@@ -29,18 +29,28 @@ function handleRequest (rpc) {
 
   // TODO: obviously fake metrics for now...
   const metrics = {
-    cpuTime: 432,
+    cpuTime: 100 * Math.random(),
     bytesIn: JSON.stringify(rpc).length,
     bytesOut: responseString.length
   }
 
+  const timestamp = String(Date.now())
+
   const logHash = recordServiceLog({
-    agentHash,
+    timestamp,
     metrics,
-    requestPayload: JSON.stringify(rpc)
+    requestPayload: JSON.stringify(rpc),
+    responseHash: 'TODO',
   })
 
   return { response, logHash }
+}
+
+function signLog ({logHash, signature}) {
+  const entry = get(logHash)
+  entry.signature = signature
+  update('serviceLog', entry, logHash)
+  return "signature received"
 }
 
 function recordServiceLog (entry) {
@@ -78,6 +88,7 @@ function genesis () {
 }
 
 function bridgeGenesis (side, dna, appData) {
+  info(side, dna, appData)
   return true
 }
 

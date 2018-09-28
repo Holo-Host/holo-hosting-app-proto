@@ -51,13 +51,19 @@
           "Exposure": "public"
         },
         {
+          "Name": "signLog",
+          "CallingType": "json",
+          "Exposure": "public"
+        },
+        {
           "Name": "getLogBatch",
           "CallingType": "json",
           "Exposure": "public"
         }
       ],
       "BridgeFuncs": [
-        "handleRequest"
+        "handleRequest",
+        "signLog"
       ]
     }
   ]
