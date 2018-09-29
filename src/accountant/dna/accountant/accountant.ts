@@ -36,11 +36,14 @@ function handleRequest (rpc) {
 
   const timestamp = String(Date.now())
 
+  const requestPayload = JSON.stringify(rpc)
+  const responseHash = 'TODO'
+
   const logHash = recordServiceLog({
     timestamp,
     metrics,
-    requestPayload: JSON.stringify(rpc),
-    responseHash: 'TODO',
+    requestPayload,
+    responseHash,
   })
 
   return { response, logHash }
